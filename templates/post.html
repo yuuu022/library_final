@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+<p background-color:#FF0000></p>
+{% block title %} <<{{ post.Bookname }}>>相關資訊 {% endblock %}
+{% block headmessage %}
+    <h3 style='font-family:微軟正黑體;font-weight:500;'>{{ post.Bookname }} <a style='font-family:微軟正黑體;font-size: small;color:green' href='/'>回首頁</a></h3>
+    <hr>    
+    <h2 style='font-family: 微軟正黑體;font-size: medium;'> 作　　者：{{post.Author}}</h2>
+    <h2 style="font-size: medium;font-family: 微軟正黑體;">出版日期：{{post.Publiccationdate}}</h2>
+    <h2 style="font-size: medium;font-family: 微軟正黑體;">書本狀態：{{post.State}}</h2>
+    </hr>
+{% endblock %}
+{% block content %} 
+        <h2 style="font-family: 標楷體;font-weight: bold;font-size: large;">內容簡介：</h2>
+        <p style='font-family:微軟正黑體;font-size:12pt;letter-spacing:2pt;'>
+            {{ post.Content | safe }}</a>
+        </p>
+{% endblock %}

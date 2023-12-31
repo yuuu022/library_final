@@ -1,0 +1,21 @@
+{% block title %} 使用者登入 {% endblock title %}
+{% block headmessage %} 
+{% endblock headmessage %} 
+
+<input value="">送出</input>
+<br/>
+帳號：<input>
+<br/>
+密碼：<input>
+<br/>
+<input type='submit' value='張貼'>
+<input type='reset' value='清除重填'>
+<script>
+    function go_delete(id){
+        //var user_pass = document.getElementById('user_pass').value;
+        //if (user_pass != "") {
+        var usr = 'delpost/' + id;
+        window.location = usr;
+        //}
+    }
+  </script>

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %} 圖書館館藏查詢系統 {% endblock %}
+{% block headmessage %} 
+<h3 style='font-family:標楷體;'>本館藏書列表 </h3>
+{% endblock %}
+{% block content %}
+{% for post in postdetails %}
+<div class='card';>
+    <div class='card-header'>
+        <p style='font-family:微軟正黑體;font-size:14pt;font-weight:bold;'>
+            <a href='/post/{{post.slug}}'style="color:#5584AC;">{{ post.Bookname }}</a>
+        </p>
+    </div>
+    <div class='card-body' style='background-color:#E1EAE8'>
+        <p>
+         館藏狀態：{{ post.State | truncatechars:40 }}
+        </p>
+    </div>
+    <div class='card-footer'  style='background-color:#efefef'>
+        <p>
+            出版日期：{{ post.Publiccationdate}}
+        </p>
+    </div>
+</div>
+<br>
+{% endfor %}
+{% endblock %}
