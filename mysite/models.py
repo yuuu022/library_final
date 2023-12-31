@@ -1,5 +1,6 @@
 from typing import Any
 from django.db import models
+from django import forms
 
 # Create your models here.
 class Post(models.Model):
@@ -46,3 +47,13 @@ class PostdetailTwo(models.Model):
     
     def __str__(self):
         return self.Bookname
+    
+from django.db import models
+
+class User(models.Model):
+    user_id = models.CharField(max_length=50)
+    user_pass = models.CharField(max_length=50)
+    enabled = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.user_id

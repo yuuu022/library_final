@@ -1,6 +1,6 @@
 from django.contrib import admin
-from mysite.models import Post
-from mysite.models import Postdetail,PostdetailTwo
+from mysite import models 
+from mysite.models import Post,Postdetail,PostdetailTwo
 
 # Register your models here.
 class PostAdmin(admin.ModelAdmin):
@@ -11,3 +11,4 @@ class PostdetailAdmin(admin.ModelAdmin):
 
 admin.site.register(Post,PostAdmin)
 admin.site.register(Postdetail,PostdetailAdmin)
+admin.site.register(models.User)

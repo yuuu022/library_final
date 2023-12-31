@@ -24,5 +24,9 @@ urlpatterns = [
     path('',homepage),
     path('post/<slug:slug>/',showpost),
     path('newinformation/',mv.newinformation),
-    path('login/',mv.login)
+    path('login/',mv.login),
+    path('register/',mv.register),
+    path('user/',mv.userhome),
+    path('user/data/',mv.userdata),
+    path('user/bookroom/',mv.bookroom),
 ]
