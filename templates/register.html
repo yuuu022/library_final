@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% block title %} 使用者註冊 {% endblock title %}
 {% block headmessage %} 
-<h3 style='font-family:標楷體;'> 使用者註冊 </h3>
+<a style='font-family:標楷體; font-size: 19pt'> 使用者註冊 </a>
+<input style="font-size: 10pt" type='button' value='返回登入' onclick='location.href="/login/"'>
 {% endblock %}
 {% block content %}
 {% if message %}
@@ -9,8 +10,6 @@
 {% endif %}
 <form action="" method="post">
     {% csrf_token %}
-    <a href='/login/' style="font-size: 12pt">返回登入</a>
-    <br/>
     <label for='user_id'>帳號：</label>
     <input id='user_id' type='text' name='user_id'>
     <br/>
