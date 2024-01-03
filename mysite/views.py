@@ -34,6 +34,8 @@ def index(request):
 from django.contrib.auth import authenticate
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+
 
 def register(request):
     if request.method == 'POST':
@@ -44,7 +46,7 @@ def register(request):
             user_password_confirm = request.POST['user_password_confirm']
             if user_pass == user_password_confirm:
                 if not User.objects.filter(username=user_id).exists():
-                    user = models.User(user_id = user_id, user_pass = user_pass)
+                    user = User.objects.create_user(user_id, '', user_pass)
                     user.save()
                     message = "註冊成功! 請點選「返回登入」進行登入"
                     #return redirect('/login/')
@@ -59,7 +61,7 @@ def register(request):
         register_form = form.LoginForm()
 
     return render(request, 'register.html', locals())
-
+    
 def login(request):
     if request.method == 'GET':
         form = LoginForm()
@@ -70,13 +72,13 @@ def login(request):
         if form.is_valid():
             user_id = request.POST['user_id'].strip()
             user_pass = request.POST['user_pass']
-            user = authenticate(user_id=user_id, user_pass=user_pass)
+            print(f'user_id:{user_id}, pass: {user_pass}')
+            user = authenticate(username=user_id, password=user_pass)
             if user is not None:
                 if user.is_active:
                     auth.login(request, user)
-                    print("success")
                     message = '成功登入了'
-                    return redirect('/')
+                    return redirect('/user/')
                 else:
                     message = '帳號尚未啟用'
             else:
