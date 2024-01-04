@@ -1,18 +1,15 @@
 {% load static %}
 <div class="well">
-        
-    <h1 style="font-family: 微軟正黑體; font-size: 35pt; font-weight: bold; text-align: center;">
+    <h1 style="font-family: 微軟正黑體; font-size: 25pt; font-weight: bold; text-align: center;">
         <img src="{% static "images/book.png" %}" width="93"> 
-            使用者介面
-            <a style='font-family:微軟正黑體;font-size: small;color:green' href='http://127.0.0.1:8000'>登出</a>
-            <input style="font-size: 12pt" type='button' value='登出' font-color='blue' onclick='location.href="/"'>
-
+        歡迎{{ user.username }}登入!
+        <input style="font-size: 12pt" type='button' value='登出' font-color='blue' onclick='location.href="/"'>
     </h1>
     <p>
         <marquee direction="left">
             <span style="font-family: 微軟正黑體; color: #787878; font-size: 20px;">
-                🕘開館日期：二~五 9:00~21:00 🕘六~日 9:00-17:00 ⏰固定休館日:每周一 📌公告：禁止在館內飲食、大聲喧嘩，自習室位置請至櫃台登記實名制座位 📌最新消息：11/6-11/10為期中考週，祝大家歐趴!!!
+                🕘開館日期：二~五 9:00~21:00 🕘六~日 9:00-17:00 ⏰固定休館日:每周一 📌公告：禁止在館內飲食、大聲喧嘩，自習室位置請至櫃台登記實名制座位
             </span>
         </marquee>
     </p>
-</div>
+</div> 

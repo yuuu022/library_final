@@ -28,5 +28,4 @@ urlpatterns = [
     path('register/',mv.register),
     path('user/',mv.userhome),
     path('user/data/',mv.userdata),
-    path('user/bookroom/',mv.bookroom),
 ]

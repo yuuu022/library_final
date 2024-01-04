@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
-from mysite.models import Post,Postdetail,PostdetailTwo
+from mysite.models import Post,Postdetail,PostdetailTwo,User,Book
 from datetime import datetime
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
@@ -88,32 +88,6 @@ def login(request):
         message = 'error'
         return render(request, 'login.html', locals())
 
-#def login(request):
-#     if request.method == 'GET':
-#         form = form.LoginForm()
-#         return render(request, 'login.html', locals())
-#     elif request.method == 'POST':
-#         form = LoginForm(request.POST)
-#         if form.is_valid():
-#             user_name = form.cleaned_data['user_name']
-#             user_password = form.cleaned_data['user_password']
-#             user = authenticate(username=user_name, password=user_password)
-#             if user is not None:
-#                 if user.is_active:
-#                     auth.login(request, user)
-#                     print("success")
-#                     message = '成功登入了'
-#                     return redirect('/')
-#                 else:
-#                     message = '帳號尚未啟用'
-#             else:
-#                 message = '登入失敗'
-
-#         return render(request, 'login.html', locals())
-#     else:
-#         message = "ERROR"
-#         return render(request, 'login.html', locals())
-
 def userhome(request):
     #posts = Post.objects.all()
     postdetails = Postdetail.objects.all()
@@ -131,3 +105,10 @@ def bookroom(request):
     postdetails = Postdetail.objects.all()
     now = datetime.now()
     return render(request,'bookroom.html',locals())
+
+@login_required
+def profile(request):
+    user = request.user
+    return render(request, 'userheader.html', {'user': user})
+
+  
