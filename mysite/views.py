@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
-from mysite.models import Post,Postdetail,PostdetailTwo,User,Book
+from mysite.models import Post,Postdetail,PostdetailTwo,User
 from datetime import datetime
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
@@ -111,4 +111,9 @@ def profile(request):
     user = request.user
     return render(request, 'userheader.html', {'user': user})
 
-  
+def usershowpost(request,slug):
+    post=Postdetail.objects.get(slug=slug)
+    if post !=None:
+        return render(request,'userpost.html',locals())
+    else:
+        return redirect("/")

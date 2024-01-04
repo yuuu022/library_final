@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from mysite.views import homepage,showpost
+from mysite.views import homepage,showpost,usershowpost
 from mysite import views as mv
 
 urlpatterns = [
@@ -28,4 +28,6 @@ urlpatterns = [
     path('register/',mv.register),
     path('user/',mv.userhome),
     path('user/data/',mv.userdata),
+    path('user/bookroom/',mv.bookroom),
+    path('userpost/<slug:slug>/',usershowpost),
 ]
