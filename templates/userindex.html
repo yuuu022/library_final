@@ -1,9 +1,7 @@
 {% extends 'userbase.html' %}
 {% block title %} 使用者介面 {% endblock %}
 {% block headmessage %} 
-<h3 style='font-family:標楷體;'>可借閱書籍
-<input type="submit" style="font-size: 12pt" value="借閱">
-</h3>
+<h3 style='font-family:標楷體;'>可借閱書籍</h3>
 {% endblock %}
 {% block content %}
 {% for post in postdetails %}
@@ -12,13 +10,8 @@
 <div class='card';>
     <div class='card-header'> 
         <form method="post">
-            <input type="checkbox" id="myCheckbox" name="myCheckbox"> 
-                <label for="myCheckbox">12
-                    <h1 style='font-family:微軟正黑體;font-size:14pt;font-weight:bold;'>
-                        <a href='/userpost/{{post.slug}}'style="color:#5584AC;">{{ post.Bookname }}</a>
-                    </h1>
-                </label>
-            </input>
+            <h1 style='font-family:微軟正黑體;font-size:14pt;font-wight:bold;'>
+                <a href='/userpost/{{post.slug}}'style="color:#5584AC;">{{ post.Bookname }}</a>
         </form>
     </div>
     <div class='card-body' style='background-color:#E1EAE8'>

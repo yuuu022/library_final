@@ -2,7 +2,7 @@
 <div class="well">
     <h1 style="font-family: 微軟正黑體; font-size: 25pt; font-weight: bold; text-align: center;">
         <img src="{% static "images/book.png" %}" width="93"> 
-        歡迎{{ user.username }}登入!
+        {{ user.username }}的書房
         <input style="font-size: 12pt" type='button' value='登出' font-color='blue' onclick='location.href="/"'>
     </h1>
     <p>

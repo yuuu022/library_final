@@ -30,4 +30,5 @@ urlpatterns = [
     path('user/data/',mv.userdata),
     path('user/bookroom/',mv.bookroom),
     path('userpost/<slug:slug>/',usershowpost),
+    path('search/',mv.search),
 ]

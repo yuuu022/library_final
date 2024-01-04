@@ -2,15 +2,16 @@
 {% block title %} 個資管理 {% endblock title %}
 {% block headmessage %}
 <h3 style='font-family:標楷體;'>個資管理　 </h3>
-<a style='font-family:微軟正黑體;font-size: small;color:green' href='http://127.0.0.1:8000/user/'>回上頁</a>
+<a style='font-family:微軟正黑體;font-size: small;color:green' href='http://127.0.0.1:8000/user/'>回首頁</a>
 {% endblock headmessage %}
 {% block content %} 
-姓名：哈囉
+userbase.html<hr>
+帳號:
 <br>
-性別：哈囉
+姓名:{{user.last_name}}{{user.first_name}}
 <br>
-電子郵件：hello
+性別:
 <br>
-帳號名稱：hello
+電子郵件:{{user.email}}
 <br>
 {% endblock %}

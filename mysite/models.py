@@ -58,4 +58,11 @@ class User(models.Model):
     def __str__(self):
         return self.user_id
     
+class User(models.Model):
+    user_id = models.CharField(max_length=50)
+    user_pass = models.CharField(max_length=50)
+    enabled = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.user_id
 

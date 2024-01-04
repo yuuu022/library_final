@@ -5,6 +5,48 @@
         圖書館館藏查詢系統
         <input style="font-size: 12pt" type='button' value='使用者登入' onclick='location.href="/login/"'>
     </h1>
+    <div id="Group_1882725_PHjAjokQep" data-width="2" data-margin_right="" data-sort="4" data-bgcolor="#0000ffff" data-addparentgroup="False" data-groupsn="1882725" data-widthdesktop="" data-anchor="" data-tabtype="3" class="group default block1" data-index="2" data-margin_defaultsetting="false" data-type="3" data-bgclass="block1" data-widthmobile="" data-groupname="" data-widthpad="" data-margin_left="" data-menuwidth="" data-isgroup="true" data-totalmilliseconds="0.0146" data-margin_bottom="" data-child="1" data-margin_top="">
+        <div class="in">
+            <div class="ct">
+                <div class="in"> 
+                    <div id="Group_1882726_P3ncKmC53W" data-width="2" data-sitesmodulesn="6" data-margin_right="" data-sort="2" data-bgcolor="" data-addparentgroup="" data-groupsn="1882726" data-widthdesktop="" data-anchor="" data-tabtype="0" class="area-editor default" data-index="1" data-margin_defaultsetting="false" data-type="0" data-bgclass="" data-widthmobile="" data-groupname="" data-widthpad="" data-margin_left="" data-menuwidth="" data-isgroup="true" data-setlen="0" data-totalmilliseconds="6.1038" data-margin_bottom="" data-child="1" data-margin_top="">
+                        <div class="in">
+                            <div class="ct">
+                                <div class="in">
+                                    <div class="searchfield">
+                                        <span class="search">
+                                            <label for="title1" style="display: none;">查詢</label>
+                                            <input data-search="WebcatSearch" id="title1" placeholder="輸入圖書、視聽資料" title="查詢" type="search" value="">
+                                        </span>
+                                        <span class="submit">
+                                            <a class="Webcat_SearchBtn" href="#" id="giveID1" title="查詢[另開新視窗]">查詢</a>
+                                        </span>
+                                    </div>    
+                    </div>
+    </div>
+    <div class="ft">
+        <div class="in">
+        <script>
+        function WebcatSearch(that) {
+            var KeyWord = that.closest('div').find('#title1').val();
+            window.open('https://book.tpml.edu.tw/search?searchInput=' + KeyWord + '&searchField=FullText', '_blank');
+        }
+        $(function() {
+            $('.Webcat_SearchBtn').each(function() {
+                $(this).click(function() {
+                    WebcatSearch($(this));
+                })
+            });
+            $('[data-search="WebcatSearch"]').on("keydown", function(event) {
+                if (event.which == 13) {
+                    WebcatSearch($('#giveID1'));
+                    return false;
+                }
+            });
+        });
+       </script>
+    </div>
+    
     <p>
         <marquee direction="left">
             <span style="font-family: 微軟正黑體; color: #787878; font-size: 20px;">
