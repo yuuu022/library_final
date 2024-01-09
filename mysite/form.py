@@ -12,11 +12,3 @@ class LoginForm(forms.Form):
 class Form(forms.Form):
     _query = forms.CharField(label='搜尋')
 
-
-class SearchForm(forms.Form):
-    title = forms.CharField(max_length=100)
-    author = forms.CharField(max_length=50)
-    publication_date = forms.DateField()
-
-    def __str__(self):
-        return self.title

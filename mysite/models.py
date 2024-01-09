@@ -47,8 +47,6 @@ class PostdetailTwo(models.Model):
     
     def __str__(self):
         return self.Bookname
-    
-from django.db import models
 
 class User(models.Model):
     user_id = models.CharField(max_length=50)
@@ -58,11 +56,12 @@ class User(models.Model):
     def __str__(self):
         return self.user_id
     
-class User(models.Model):
-    user_id = models.CharField(max_length=50)
-    user_pass = models.CharField(max_length=50)
-    enabled = models.BooleanField(default=False)
-
-    def __str__(self):
-        return self.user_id
-
+class Book(models.Model):
+    state = (
+        ("館藏中","館藏中"),
+        ("預約中","預約中"),
+        ("借出中","借出中"),
+    )
+    title = models.CharField(max_length=100)  
+    state = models.CharField(max_length=8, choices=state)  
+    Author = models.CharField(max_length=100)  

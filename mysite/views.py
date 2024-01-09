@@ -1,11 +1,13 @@
-from django.shortcuts import render
-from django.shortcuts import redirect
-from mysite.models import Post,Postdetail,PostdetailTwo,User
+from django.shortcuts import render,redirect
+from mysite.models import Post,Postdetail,User
 from datetime import datetime
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
 from mysite.form import UserRegisterForm,LoginForm
 from mysite import form,models
+from .models import Book
+from .filters import BookFilter
+
 
 # Create your views here.
 def homepage(request):
@@ -117,27 +119,17 @@ def usershowpost(request,slug):
         return render(request,'userpost.html',locals())
     else:
         return redirect("/")
-    
-# def searchform (request):
-#     if 'search_query' in request.GET:
-#         search_query = request.GET['search_query']
-#         # 實現搜尋邏輯，使用模型的filter或其他方法
-#         results = YourModel.objects.filter(name__icontains=search_query)  # 替換為實際的模型字段
-#     else:
-#         results = None
 
-#     form = SearchForm (request.GET)
-
-#     return render(request, 'searchbook.html', {'form': form, 'results': results})
-
-
-
-def search(request):
-    return render(request,'searchbook.html',locals())
-'''
-from .models import Book
-from django.db.models import Q
-def search_view(request):
-    query = request.GET.get('q', '')  # 获取搜索关键字
-    results = Book.objects.filter(Q(name__icontains=query) | Q(description__icontains=query))
-    return render(request, 'search_results.html', {'results': results, 'query': query})'''
+def book(request):
+    books = Book.objects.all()
+ 
+    bookFilter = BookFilter(queryset=books)
+ 
+    if request.method == "POST":
+        bookFilter = BookFilter(request.POST, queryset=books)
+ 
+    context = {
+        'bookFilter': bookFilter
+    }
+ 
+    return render(request, 'search.html', context)

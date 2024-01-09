@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+ 
+{% block content %}
+ 
+<form method='POST'>
+    {% csrf_token %}
+    書名：{{ bookFilter.form.title }}
+    書本狀態：{{ bookFilter.form.state }}
+    作者：{{ bookFilter.form.Author }}
+    <input type="submit" value="查詢" />
+</form>
+<br />
+<table class="table">
+    <thead>
+        <th>書名</th>
+        <th>書本狀態</th>
+        <th>作者</th>
+    </thead>
+    <tbody>
+        {% for book in bookFilter.qs %}
+        <tr>
+            <td>{{ book.title }}</td>
+            <td>{{ book.state }}</td>
+            <td>{{ book.Author }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock  %}
