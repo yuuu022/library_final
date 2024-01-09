@@ -1,29 +1,33 @@
 {% extends 'base.html' %}
- 
+{% block headmessage %} 
+<h3 style='font-family:標楷體;'>搜尋功能 </h3>
+{% endblock %}
 {% block content %}
- 
 <form method='POST'>
     {% csrf_token %}
     書名：{{ bookFilter.form.title }}
-    書本狀態：{{ bookFilter.form.state }}
-    作者：{{ bookFilter.form.Author }}
     <input type="submit" value="查詢" />
 </form>
 <br />
-<table class="table">
-    <thead>
-        <th>書名</th>
-        <th>書本狀態</th>
-        <th>作者</th>
-    </thead>
+<table class="table">       
     <tbody>
+        <thead>
+            <th>書名</th>
+            <th>書本狀態</th>
+            <th>作者</th>
+        </thead> 
         {% for book in bookFilter.qs %}
         <tr>
             <td>{{ book.title }}</td>
             <td>{{ book.state }}</td>
             <td>{{ book.Author }}</td>
+
         </tr>
-        {% endfor %}
+        
     </tbody>
+
+    {% empty %}
+    查無書本
+    {% endfor %}
 </table>
 {% endblock  %}

@@ -5,31 +5,7 @@
         <img src="{% static "images/book.png" %}" width="93"> 
         圖書館館藏查詢系統
         <input style="font-size: 12pt" type='button' value='使用者登入' onclick='location.href="/login/"'>
-    </h1>
-
-    <div class="ft">
-        <div class="in">
-        <script>
-        function WebcatSearch(that) {
-            var KeyWord = that.closest('div').find('#title1').val();
-            window.open('https://book.tpml.edu.tw/search?searchInput=' + KeyWord + '&searchField=FullText', '_blank');
-        }
-        $(function() {
-            $('.Webcat_SearchBtn').each(function() {
-                $(this).click(function() {
-                    WebcatSearch($(this));
-                })
-            });
-            $('[data-search="WebcatSearch"]').on("keydown", function(event) {
-                if (event.which == 13) {
-                    WebcatSearch($('#giveID1'));
-                    return false;
-                }
-            });
-        });
-       </script>
-    </div>
-    
+    </h1>  
     <p>
         <marquee direction="left">
             <span style="font-family: 微軟正黑體; color: #787878; font-size: 20px;">
@@ -37,5 +13,4 @@
             </span>
         </marquee>
     </p>
-    
 </div>

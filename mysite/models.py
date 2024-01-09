@@ -64,4 +64,4 @@ class Book(models.Model):
     )
     title = models.CharField(max_length=100)  
     state = models.CharField(max_length=8, choices=state)  
-    Author = models.CharField(max_length=100)  
+    Author = models.CharField(max_length=100) 
