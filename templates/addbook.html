@@ -40,7 +40,7 @@
           <div class='card-header text-white bg-primary'>【{{ p.Bookname }}】已被新增</div>
           <div class='card-body'>{{ p.Author | linebreaks }}</div>
           <div class='card-footer' align='right'>
-                {{ p.state | linebreaks }}
+                {{ p.State | linebreaks }}
               <i><small>{{ p.pub_time }}</small></i>
               <i class="bi bi-trash"  onclick='go_delete({{p.id}})'></i>
           </div>

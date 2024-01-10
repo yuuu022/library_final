@@ -138,6 +138,7 @@ def usersearch(request):
     #posts = Post.objects.all()
     postdetails = Postdetail.objects.all()
     now = datetime.now()
+    
     return render(request,'usersearch.html',locals())
 
 def loginAdmin(request):

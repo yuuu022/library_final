@@ -1,9 +1,9 @@
-from .models import Book
+from .models import Postdetail
 import django_filters
 
 class BookFilter(django_filters.FilterSet):
-    title = django_filters.CharFilter(field_name='title', lookup_expr='icontains')
+    title = django_filters.CharFilter(field_name='Bookname', lookup_expr='icontains')
 
     class Meta:
-        model = Book
+        model = Postdetail
         fields = '__all__'
