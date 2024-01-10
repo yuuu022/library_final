@@ -139,3 +139,42 @@ def usersearch(request):
     postdetails = Postdetail.objects.all()
     now = datetime.now()
     return render(request,'usersearch.html',locals())
+
+def loginAdmin(request):
+    if request.method == 'GET':
+        form = LoginForm()
+        return render(request, 'loginAdmin.html', locals())
+        
+    elif request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            user_id = request.POST['user_id'].strip()
+            user_pass = request.POST['user_pass']
+            print(f'user_id:{user_id}, pass: {user_pass}')
+            user = authenticate(username=user_id, password=user_pass)
+            if user is not None:
+                if user.is_active:
+                    auth.login(request, user)
+                    message = '成功登入了'
+                    return redirect('/adminhome/')
+                else:
+                    message = '帳號尚未啟用'
+            else:
+                message = '登入失敗'
+        return render(request, 'loginAdmin.html', locals())
+    else:
+        message = 'error'
+        return render(request, 'loginAdmin.html', locals())
+    
+def adminhome(request):
+    #posts = Post.objects.all()
+    postdetails = Postdetail.objects.all()
+    now = datetime.now()
+    return render(request,'adminindex.html',locals())
+
+def adminshowpost(request,slug):
+    post=Postdetail.objects.get(slug=slug)
+    if post !=None:
+        return render(request,'adminpost.html',locals())
+    else:
+        return redirect("/")

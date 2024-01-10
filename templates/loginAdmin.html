@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %} 使用者登入 {% endblock title %}
+{% block headmessage %} 
+<h3 style='font-family:標楷體;'> 管理者登入 </h3>
+{% endblock %}
+{% block content %} 
+{% if message %}
+    <div class='alert alert-warning'>{{ message }}</div>
+{% endif %}
+<form action='.' method='POST'>
+    {% csrf_token %}
+
+    <label for='user_id'>帳號：</label>
+    <input id='user_id' type='text' name='user_id'>
+    <br/>
+    <label for='user_pass'>密碼：</label>
+    <input id='user_pass' type='password' name='user_pass'>
+    <br/>
+    <br/>
+    <input style="font-size: 12pt" type='button' value='註冊' onclick='location.href="/register/"'>
+    <input type='submit' value='登入'>
+    <input type='reset' value='清除重填'>
+</form> 
+<script>
+    function go_delete(id){
+        //var user_pass = document.getElementById('user_pass').value;
+        //if (user_pass != "") {
+        var usr = 'delpost/' + id;
+        window.location = usr;
+        //}
+    }
+</script>
+{% endblock %}

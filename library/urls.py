@@ -32,5 +32,9 @@ urlpatterns = [
     path('userpost/<slug:slug>/',usershowpost),
     path('search/',mv.book),
     path('user/search/',mv.usersearch),
+    path('loginAdmin/',mv.loginAdmin),
+    path('adminhome/',mv.adminhome),
+    path('adminpost/<slug:slug>/',mv.adminshowpost),
+
 
 ]

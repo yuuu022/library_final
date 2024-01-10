@@ -1,0 +1,14 @@
+{% extends 'adminbase.html' %}
+{% block title %} 管理者介面 {% endblock %}
+{% block headmessage %} 
+<h3 style='font-family:標楷體;'>書籍管理</h3>
+{% endblock %}
+{% block content %}
+{% for post in postdetails %}
+<p style='font-family:微軟正黑體;font-size:14pt;font-weight:bold;'>
+    <h1 style='font-family:微軟正黑體;font-size:14pt;font-weight:bold;'>
+        <a href='/adminpost/{{post.slug}}'style="color:#5584AC;">{{ post.Bookname }}</a>                    
+    </h1>
+{% endfor %}
+
+{% endblock %}
