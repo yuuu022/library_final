@@ -31,4 +31,6 @@ urlpatterns = [
     path('user/bookroom/',mv.bookroom),
     path('userpost/<slug:slug>/',usershowpost),
     path('search/',mv.book),
+    path('user/search/',mv.usersearch),
+
 ]
