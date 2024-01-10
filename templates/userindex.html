@@ -6,30 +6,46 @@
 {% block content %}
 {% for post in postdetails %}
 <p style='font-family:微軟正黑體;font-size:14pt;font-weight:bold;'>
+    <div class='card'>
+        <div class='card-header'> 
+            <form method="post">
+                <h1 style='font-family:微軟正黑體;font-size:14pt;font-weight:bold;'>
+                    <a href='/userpost/{{post.slug}}'style="color:#5584AC;">{{ post.Bookname }}</a>                    
+                </h1>
+            </form>
+        </div>
+        <div class='card-body' style='background-color:#E1EAE8'>
+            <p>
+                <input type="checkbox" id="borrowCheckbox_{{ post.id }}" name="myCheckbox" onclick="toggleCheck('borrowCheckbox_{{ post.id }}', 'returnCheckbox_{{ post.id }}', 'borrowStatus_{{ post.id }}')">
+                <label for="borrowCheckbox_{{ post.id }}">借閱</label>
+        
+                <input type="checkbox" id="returnCheckbox_{{ post.id }}" name="myCheckbox" onclick="toggleCheck('returnCheckbox_{{ post.id }}', 'borrowCheckbox_{{ post.id }}', 'returnStatus_{{ post.id }}')">
+                <label for="returnCheckbox_{{ post.id }}">歸還</label>
+            </p>
+            <p id="borrowStatus_{{ post.id }}">借閱狀態：未借閱</p>
+        </div>
+        
+        <div class='card-footer'  style='background-color:#efefef'>
 
-<div class='card';>
-    <div class='card-header'> 
-        <form method="post">
-                    <h1 style='font-family:微軟正黑體;font-size:14pt;font-weight:bold;'>
-                        <a href='/userpost/{{post.slug}}'style="color:#5584AC;">{{ post.Bookname }}</a>                    
-                    </h1>
-        </form>
+        </div>
     </div>
-    <div class='card-body' style='background-color:#E1EAE8'>
-        <p>
-            <input type="checkbox" id="borrowCheckbox" name="myCheckbox"><label for="borrowCheckbox">借閱</label>
-            
-            <input type="checkbox" id="returnCheckbox" name="myCheckbox"><label for="returnCheckbox">歸還</label>
-            
-        </p>
-    </div>
-    <div class='card-footer'  style='background-color:#efefef'>
-        <p>
-            館藏狀態：{{ post.State | truncatechars:40 }}
-        </p>
-    </div>
-</div>
-<br>
+    <br>
 {% endfor %}
-{% endblock %}
 
+<script>
+    function toggleCheck(clickedId, otherId, statusId) {
+        var clickedCheckbox = document.getElementById(clickedId);
+        var otherCheckbox = document.getElementById(otherId);
+        var statusElement = document.getElementById(statusId);
+
+        if (clickedCheckbox.checked) {
+            otherCheckbox.checked = false;
+            statusElement.textContent = '借閱狀態：已借閱';
+        } else {
+            statusElement.textContent = '借閱狀態：未借閱';
+        }
+    }
+</script>
+
+
+{% endblock %}
