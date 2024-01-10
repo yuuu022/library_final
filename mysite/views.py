@@ -121,7 +121,7 @@ def usershowpost(request,slug):
         return redirect("/")
 
 def book(request):
-    books = Book.objects.all()
+    books = Postdetail.objects.all()
  
     bookFilter = BookFilter(queryset=books)
  
@@ -178,3 +178,20 @@ def adminshowpost(request,slug):
         return render(request,'adminpost.html',locals())
     else:
         return redirect("/")
+    
+def addbook(request):
+    posts = Postdetail.objects.filter(enable=True).order_by('-Publiccationdate')[:30]
+
+    if request.method == 'GET':
+        return render(request, 'addbook.html', locals())
+    elif request.method == 'POST':
+        bookname = request.POST['bookname']
+        author = request.POST['author']
+        state = request.POST['state']
+        post = Postdetail(Bookname=bookname, Author=author, State=state)
+        post.save()
+        message = f'成功儲存[{bookname}]!'
+        return render(request, 'addbook.html', locals())
+    else:
+        message = 'post/get 出現錯誤'
+        return render(request, 'addbook.html', locals())

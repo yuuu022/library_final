@@ -27,6 +27,8 @@ class Postdetail(models.Model):
     Content = models.TextField()
     Publiccationdate = models.CharField(max_length=20)
     State = models.CharField(max_length=8,choices=state)
+    enable = models.BooleanField(default=True)
+
     
     def __str__(self):
         return self.Bookname

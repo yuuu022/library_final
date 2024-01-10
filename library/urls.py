@@ -35,6 +35,7 @@ urlpatterns = [
     path('loginAdmin/',mv.loginAdmin),
     path('adminhome/',mv.adminhome),
     path('adminpost/<slug:slug>/',mv.adminshowpost),
+    path('addbook/',mv.addbook),
 
 
 ]

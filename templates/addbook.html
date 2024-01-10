@@ -1,0 +1,54 @@
+{% extends "adminbase.html" %}
+{% block title %} 書籍新增 {% endblock title %}
+{% block headmessage %} 
+<p style="font-family: 標楷體;font-size: 30px;">書籍新增</p>
+{% endblock headmessage %} 
+
+{% block content %}
+<script>
+  function go_delete(id){
+      //var user_pass = document.getElementById('user_pass').value;
+      //if (user_pass != "") {
+      var usr = 'delpost/' + id;
+      window.location = usr;
+      //}
+  }
+</script>
+<h2>書籍新增</h2>
+{% if message %}
+    <div class='alert alert-warning'>
+         {{ message }}
+    </div>
+{% endif %}
+<form action="" method="post">
+    {% csrf_token %}
+  <label for="title">書名:</label>
+  <input id='title' type='text' name='bookname'>
+  <label for='user_id'>作者：</label>
+  <input id='user_id' type='text' name='author'>
+  <br/>
+  <label for='user_pass'>書籍狀態：</label>
+  <input id='user_pass' type='password' name='state'><br/>
+
+  <input type='submit' value='上傳'>
+  <input type='reset' value='清除重填'>
+</form> 
+<div class="row">
+  {% for p in posts %}
+   <div class="col-sm-12 col-md-4">
+      <div class='card'>
+          <div class='card-header text-white bg-primary'>【{{ p.Bookname }}】已被新增</div>
+          <div class='card-body'>{{ p.Author | linebreaks }}</div>
+          <div class='card-footer' align='right'>
+                {{ p.state | linebreaks }}
+              <i><small>{{ p.pub_time }}</small></i>
+              <i class="bi bi-trash"  onclick='go_delete({{p.id}})'></i>
+          </div>
+      </div>
+  </div>
+  {% empty %}
+      目前沒有任何新增書籍
+  {% endfor %}
+</div> 
+
+{% endblock content %}

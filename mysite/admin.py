@@ -9,7 +9,7 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ('title','slug','pub_date')
 
 class PostdetailAdmin(admin.ModelAdmin):
-    list_display=('Bookname','slug','State')
+    list_display=('Bookname', 'Author', 'State', 'Publiccationdate', 'enable')
     
 class BookAdmin(admin.ModelAdmin):
     list_display = ('title', 'state', 'Author')
@@ -17,4 +17,3 @@ class BookAdmin(admin.ModelAdmin):
 admin.site.register(Post,PostAdmin)
 admin.site.register(Postdetail,PostdetailAdmin)
 admin.site.register(models.User)
-admin.site.register(Book, BookAdmin)
