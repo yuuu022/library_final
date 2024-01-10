@@ -22,13 +22,13 @@
 {% endif %}
 <form action="" method="post">
     {% csrf_token %}
-  <label for="title">書名:</label>
-  <input id='title' type='text' name='bookname'>
-  <label for='user_id'>作者：</label>
-  <input id='user_id' type='text' name='author'>
+  <label for="bookname">書名:</label>
+  <input id='bookname' type='text' name='bookname'>
+  <label for='author'>作者：</label>
+  <input id='author' type='text' name='author'>
   <br/>
-  <label for='user_pass'>書籍狀態：</label>
-  <input id='user_pass' type='password' name='state'><br/>
+  <label for='state'>書籍狀態：</label>
+  <input id='user_id' type='text' name='state'>
 
   <input type='submit' value='上傳'>
   <input type='reset' value='清除重填'>
